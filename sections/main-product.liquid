@@ -383,6 +383,12 @@
                         {%- endif -%}
                       </price-per-item>
                     {%- endif -%}
+                    {% comment %}  Text input field:{% endcomment%}
+                    <div class="product-custom-field">
+                      <label for="custom_text">Custom Text</label>
+                      <input type="text" id="custom_text" name="properties[Custom Text]" />
+                    </div>
+
                   </div>
                   <div class="quantity__rules caption" id="Quantity-Rules-{{ section.id }}">
                     {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
