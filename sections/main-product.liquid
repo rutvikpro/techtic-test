@@ -141,25 +141,7 @@
                     {{ form | payment_terms }}
                   {%- endform -%}
                 </div>
-                                 <form method="post" action="/cart/add">
-                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                 <div class="product-custom-field">
-    <label for="custom_text">Custom Text</label>
-    <input type="text" id="custom_text" name="properties[Custom Text]" placeholder="Enter your text here" />
-  </div>
-
-  <div class="product-custom-field">
-    <label for="admin_dropdown">Admin Only Option</label>
-    <select id="admin_dropdown" name="properties[_Admin Dropdown]">
-      <option value="Option A">Option A</option>
-      <option value="Option B">Option B</option>
-      <option value="Option C">Option C</option>
-    </select>
-  </div>
- <button type="submit" class="product-form__submit button">
-    {{ 'products.product.add_to_cart' | t }}
-  </button> 
-  </form>
+                  
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -404,21 +386,25 @@
                       </price-per-item>
                     {%- endif -%}
                     {% comment %}  Text input field:{% endcomment%}
-                    <div class="product-custom-field">
-                      <label for="custom_text">Custom Text</label>
-                      <input type="text" id="custom_text" name="properties[Custom Text]" />
-                    </div>
+               <form method="post" action="/cart/add">
+                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                 <div class="product-custom-field">
+    <label for="custom_text">Custom Text</label>
+    <input type="text" id="custom_text" name="properties[Custom Text]" placeholder="Enter your text here" />
+  </div>
 
-
-
-                    <div class="product-custom-field">
-  <label for="admin_dropdown">Admin Only Option</label>
-  <select id="admin_dropdown" name="properties[_Admin Dropdown]">
-    <option value="Option A">Option A</option>
-    <option value="Option B">Option B</option>
-    <option value="Option C">Option C</option>
-  </select>
-</div>
+  <div class="product-custom-field">
+    <label for="admin_dropdown">Admin Only Option</label>
+    <select id="admin_dropdown" name="properties[_Admin Dropdown]">
+      <option value="Option A">Option A</option>
+      <option value="Option B">Option B</option>
+      <option value="Option C">Option C</option>
+    </select>
+  </div>
+ <button type="submit" class="product-form__submit button">
+    {{ 'products.product.add_to_cart' | t }}
+  </button> 
+  </form>
 
 
                   </div>
