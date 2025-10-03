@@ -150,7 +150,11 @@
       <option value="Option B">Option B</option>
       <option value="Option C">Option C</option>
     </select>
-  </div></form>
+  </div>
+ <button type="submit" class="product-form__submit button">
+    {{ 'products.product.add_to_cart' | t }}
+  </button> 
+  </form>
 
                     {{ form | payment_terms }}
                   {%- endform -%}
