@@ -389,6 +389,16 @@
                       <input type="text" id="custom_text" name="properties[Custom Text]" />
                     </div>
 
+                    <div class="product-custom-field">
+  <label for="admin_dropdown">Admin Only Option</label>
+  <select id="admin_dropdown" name="properties[_Admin Dropdown]">
+    <option value="Option A">Option A</option>
+    <option value="Option B">Option B</option>
+    <option value="Option C">Option C</option>
+  </select>
+</div>
+
+
                   </div>
                   <div class="quantity__rules caption" id="Quantity-Rules-{{ section.id }}">
                     {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
