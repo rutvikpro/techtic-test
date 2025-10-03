@@ -388,6 +388,16 @@
                       <label for="custom_text">Custom Text</label>
                       <input type="text" id="custom_text" name="properties[Custom Text]" />
                     </div>
+                    <form method="post" action="/cart/add" id="product-form-{{ section.id }}">
+  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+  <!-- Custom text field -->
+  <label for="custom_text">Custom Text</label>
+  <input type="text" id="custom_text" name="properties[Custom Text]" />
+
+  <button type="submit">Add to Cart</button>
+</form>
+
 
                     <div class="product-custom-field">
   <label for="admin_dropdown">Admin Only Option</label>
