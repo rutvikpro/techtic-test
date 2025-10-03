@@ -33,7 +33,7 @@
         {{- 'general.continue_shopping' | t -}}
       </a>
     </div>
-<p>test</p>
+
     <div class="cart__warnings">
       <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
       <a href="{{ routes.all_products_collection_url }}" class="button">
@@ -103,13 +103,12 @@
                       {% endif %}
                     </td>
 
-                    <td class="cart-item__details" >
-{%- if item.properties['Custom Text'] != blank -%}
+                    <td class="cart-item__details">
+                      {%- if item.properties['Custom Text'] != blank -%}
   <p class="cart-item-property text-sm text-gray-600">
     <strong>Custom Text:</strong> {{ item.properties['Custom Text'] }}
   </p>
 {%- endif -%}
-
                       {%- if settings.show_vendor -%}
                         <p class="caption-with-letter-spacing">{{ item.product.vendor }}</p>
                       {%- endif -%}
@@ -150,17 +149,6 @@
                               </div>
                             {%- endfor -%}
                           {%- endif -%}
-                          {% for property in item.properties %}
-  {% assign property_name = property.first %}
-  {% assign property_value = property.last %}
-
-  {% if property_value != blank and property_name contains '_' == false %}
-    <div class="cart-property">
-      <strong>{{ property_name }}:</strong> {{ property_value }}
-    </div>
-  {% endif %}
-{% endfor %}
-
 
                           {%- for property in item.properties -%}
                             {%- assign property_first_char = property.first | slice: 0 -%}
