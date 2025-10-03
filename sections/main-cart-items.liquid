@@ -104,6 +104,11 @@
                     </td>
 
                     <td class="cart-item__details" >
+{%- if item.properties['Custom Text'] != blank -%}
+  <p class="cart-item-property text-sm text-gray-600">
+    <strong>Custom Text:</strong> {{ item.properties['Custom Text'] }}
+  </p>
+{%- endif -%}
 
                       {%- if settings.show_vendor -%}
                         <p class="caption-with-letter-spacing">{{ item.product.vendor }}</p>
