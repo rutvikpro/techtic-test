@@ -136,10 +136,12 @@
                 <div {{ block.shopify_attributes }}>
                   {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
                   {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
-                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+
                     {{ form | payment_terms }}
                   {%- endform -%}
                 </div>
+                  
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -383,6 +385,28 @@
                         {%- endif -%}
                       </price-per-item>
                     {%- endif -%}
+                    {% comment %}  Text input field:{% endcomment%}
+               <form method="post" action="/cart/add">
+                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                 <div class="product-custom-field">
+    <label for="custom_text">Custom Text</label>
+    <input type="text" id="custom_text" name="properties[Custom Text]" placeholder="Enter your text here" />
+  </div>
+
+  <div class="product-custom-field">
+    <label for="admin_dropdown">Admin Only Option</label>
+    <select id="admin_dropdown" name="properties[_Admin Dropdown]">
+      <option value="Option A">Option A</option>
+      <option value="Option B">Option B</option>
+      <option value="Option C">Option C</option>
+    </select>
+  </div>
+ <button type="submit" class="product-form__submit button">
+    {{ 'products.product.add_to_cart' | t }}
+  </button> 
+  </form>
+
+
                   </div>
                   <div class="quantity__rules caption" id="Quantity-Rules-{{ section.id }}">
                     {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
@@ -465,7 +489,22 @@
                     class="product-popup-modal__button link"
                     type="button"
                     aria-haspopup="dialog"
-                  >
+                  >                     <div class="product-custom-field">
+                      <label for="custom_text">Custom Text</label>
+                      <input type="text" id="custom_text" name="properties[Custom Text]" />
+                    </div>
+
+
+
+                    <div class="product-custom-field">
+  <label for="admin_dropdown">Admin Only Option</label>
+  <select id="admin_dropdown" name="properties[_Admin Dropdown]">
+    <option value="Option A">Option A</option>
+    <option value="Option B">Option B</option>
+    <option value="Option C">Option C</option>
+  </select>
+</div>
+
                     {{ block.settings.text | default: block.settings.page.title | escape }}
                   </button>
                 </modal-opener>
